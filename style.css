@@ -1,0 +1,220 @@
+/* Base Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+:root {
+    --bg-dark: #0f172a;
+    --card-bg: #1e293b;
+    --neon-green: #22c55e;
+    --neon-red: #ef4444;
+    --accent-blue: #3b82f6;
+    --glow: 0 0 15px rgba(59, 130, 246, 0.5);
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Background Animation */
+.bg-lines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)),
+                url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+    z-index: -1;
+}
+
+/* App Container (Mobile First) */
+.app-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Header & Logo */
+header {
+    margin-bottom: 30px;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.logo-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-dark);
+    border: 3px solid transparent;
+    background-image: linear-gradient(var(--bg-dark), var(--bg-dark)), 
+                      linear-gradient(45deg, #3b82f6, #9333ea);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    box-shadow: 0 0 20px rgba(147, 51, 234, 0.6);
+    animation: pulse 2s infinite;
+}
+
+.logo-circle span {
+    font-weight: bold;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    color: white;
+}
+
+h1 {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: linear-gradient(to right, #fff, #94a3b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Form Styling */
+.input-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.7rem;
+    color: #94a3b8;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+select {
+    width: 100%;
+    padding: 12px;
+    background: var(--card-bg);
+    border: 1px solid #334155;
+    border-radius: 12px;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+}
+
+select:focus {
+    border-color: var(--accent-blue);
+}
+
+/* Button Styling */
+#getSignalBtn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(45deg, #2563eb, #7c3aed);
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin-top: 10px;
+}
+
+#getSignalBtn:active {
+    transform: scale(0.95);
+}
+
+#getSignalBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    filter: grayscale(1);
+}
+
+/* Loader & Results */
+.hidden { display: none; }
+
+.loader {
+    margin-top: 30px;
+    animation: fadeIn 0.5s ease;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255,255,255,0.1);
+    border-top: 4px solid var(--accent-blue);
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    animation: spin 1s linear infinite;
+}
+
+.result-card {
+    margin-top: 30px;
+    padding: 25px;
+    background: var(--card-bg);
+    border-radius: 20px;
+    animation: slideUp 0.5s ease;
+    border: 1px solid #334155;
+}
+
+.signal-text {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 5px;
+    text-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+.up { color: var(--neon-green); text-shadow: 0 0 15px rgba(34, 197, 94, 0.5); }
+.down { color: var(--neon-red); text-shadow: 0 0 15px rgba(239, 68, 68, 0.5); }
+
+.confidence-container {
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+#confidenceValue {
+    color: white;
+    font-weight: bold;
+}
+
+footer {
+    margin-top: 40px;
+    color: #475569;
+    font-size: 0.7rem;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 20px rgba(147, 51, 234, 0.4); }
+    50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(147, 51, 234, 0.7); }
+    100% { transform: scale(1); box-shadow: 0 0 20px rgba(147, 51, 234, 0.4); }
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

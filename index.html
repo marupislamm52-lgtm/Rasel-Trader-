@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RASEL Trader | Signals</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Animation Layer -->
+    <div class="bg-lines"></div>
+
+    <div class="app-container">
+        <!-- Header Section -->
+        <header>
+            <div class="logo-container">
+                <div class="logo-circle">
+                    <span>RASEL</span>
+                </div>
+            </div>
+            <h1>RASEL Trader</h1>
+        </header>
+
+        <main>
+            <!-- Broker Selection -->
+            <div class="input-group">
+                <label>BROKER</label>
+                <select id="brokerSelect">
+                    <option value="QUOTEX">QUOTEX</option>
+                    <option value="POCKET OPTION">POCKET OPTION</option>
+                    <option value="IQ OPTION">IQ OPTION</option>
+                    <option value="BINOMO">BINOMO</option>
+                </select>
+            </div>
+
+            <!-- Market Selection -->
+            <div class="input-group">
+                <label>MARKET</label>
+                <select id="marketSelect">
+                    <option value="EUR/USD">EUR/USD</option>
+                    <option value="GBP/USD">GBP/USD</option>
+                    <option value="USD/JPY">USD/JPY</option>
+                    <option value="AUD/USD">AUD/USD</option>
+                    <option value="USD/CAD">USD/CAD</option>
+                    <option value="EUR/JPY">EUR/JPY</option>
+                    <option value="GBP/JPY">GBP/JPY</option>
+                    <option value="XAU/USD">XAU/USD (Gold)</option>
+                    <option value="BTC/USD">BTC/USD</option>
+                    <option value="ETH/USD">ETH/USD</option>
+                    <option value="USD/BRL (OTC)">USD/BRL (OTC)</option>
+                    <option value="USD/PKR (OTC)">USD/PKR (OTC)</option>
+                    <option value="EUR/GBP">EUR/GBP</option>
+                    <option value="NZD/USD">NZD/USD</option>
+                    <option value="CHF/JPY">CHF/JPY</option>
+                </select>
+            </div>
+
+            <!-- Time Selector -->
+            <div class="input-group">
+                <label>TIMEFRAME</label>
+                <select id="timeframeSelect">
+                    <option value="5s">5 Seconds</option>
+                    <option value="10s">10 Seconds</option>
+                    <option value="15s">15 Seconds</option>
+                    <option value="30s">30 Seconds</option>
+                    <option value="1m" selected>1 Minute</option>
+                    <option value="2m">2 Minutes</option>
+                    <option value="3m">3 Minutes</option>
+                    <option value="5m">5 Minutes</option>
+                </select>
+            </div>
+
+            <!-- Action Button -->
+            <button id="getSignalBtn">GET SIGNAL</button>
+
+            <!-- Loading Spinner (Hidden by default) -->
+            <div id="loader" class="loader hidden">
+                <div class="spinner"></div>
+                <p>Analyzing Market Momentum...</p>
+            </div>
+
+            <!-- Signal Result Area (Hidden by default) -->
+            <div id="resultArea" class="result-card hidden">
+                <div id="signalDirection" class="signal-text">--</div>
+                <div class="confidence-container">
+                    <span>Confidence: </span>
+                    <span id="confidenceValue">0%</span>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>For educational purposes only.</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
